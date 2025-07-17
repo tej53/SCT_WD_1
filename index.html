@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <title>Document</title>
+</head>
+<body class="bg-black">
+    <header>
+        <div>
+            <nav id="navbar" class="bg-teal-600 transition-colors duration-500 text-white p-2 flex justify-center gap-16 fixed top-0 w-full z-50">
+                <a href="#home" class="hover:bg-black hover:text-white p-2 rounded-md transition duration-300">Home</a>
+                <a href="#about" class="hover:bg-black hover:text-white p-2 rounded-md transition duration-300">About Us</a>
+                <a href="#services" class="hover:bg-black h over:text-white p-2 rounded-md transition duration-300">Services</a>
+                <a href="#contact" class="hover:bg-black hover:text-white p-2 rounded-md transition duration-300">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home -->
+    <section id="home" data-nav="bg-teal-600" style="height: calc(100vh - 64px);" class="scroll-mt-20 flex items-center justify-center pt-20" data-aos="fade-right">
+        <h1 class="text-8xl text-teal-600 text-center font-bold">Welcome to our Website</h1>
+    </section>
+
+    <!-- About -->
+    <section id="about" data-nav="bg-red-700" style="height: calc(100vh - 64px);" class="scroll-mt-40 flex justify-center items-center flex-col" data-aos="fade-up">
+        <h1 class="text-6xl text-red-600 text-center font-bold mt-20">About</h1>
+        <p class="text-white text-xl p-10">
+            I am Yagnatejeswar Reddy, a B.Tech student specializing in Full Stack Web Development. I am currently
+            pursuing my degree at Lovely Professional University (LPU), Jalandhar, Punjab. I'm focused on enhancing
+            my frontend skills using HTML, CSS, Tailwind CSS, and JavaScript.
+        </p>
+    </section>
+
+    <!-- Services -->
+    <section id="services" data-nav="bg-indigo-700" style="height: calc(100vh - 64px);" class="scroll-mt-20 flex text-indigo-700 justify-center items-center flex-col" data-aos="fade-right">
+        <h1 class="text-6xl text-white font-bold mb-12">Services</h1>
+        <ol class="text-white text-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full">
+            <li class="bg-indigo-700 p-6 rounded-xl h-40 flex items-center justify-center shadow-lg hover:scale-105 transition duration-300">
+                Responsive & Mobile-Friendly Design
+            </li>
+            <li class="bg-indigo-700 p-6 rounded-xl h-40 flex items-center justify-center shadow-lg hover:scale-105 transition duration-300">
+                Interactive Features & Animations
+            </li>
+            <li class="bg-indigo-700 p-6 rounded-xl h-40 flex items-center justify-center shadow-lg hover:scale-105 transition duration-300">
+                Basic Form Handling & Validation
+            </li>
+            <li class="bg-indigo-700 p-6 rounded-xl h-40 flex items-center justify-center shadow-lg hover:scale-105 transition duration-300">
+                Build & Deployment Assistance
+            </li>
+            <li class="bg-indigo-700 p-6 rounded-xl h-40 flex items-center justify-center shadow-lg hover:scale-105 transition duration-300">
+                Maintenance & Updates
+            </li>
+            <li class="bg-indigo-700 p-6 rounded-xl h-40 flex items-center justify-center shadow-lg hover:scale-105 transition duration-300">
+                Version Control (Git)
+            </li>
+        </ol>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" data-nav="bg-green-900" style="height: calc(100vh - 64px);" class="scroll-mt-40 flex justify-center text-white items-center mt-10 mb-10 gap-10 flex-col" data-aos="fade-up">
+        <h1 class="text-6xl text-white text-center font-bold">Contact</h1>
+        <a href="https://www.linkedin.com/in/yagnatejeswar-reddy-kampalle/" target="_blank" class="bg-green-900 p-4 text-xl rounded-md w-72 text-center">LinkedIn</a>
+        <a href="https://portfolio-six-nu-8l8yvhhf1o.vercel.app/" target="_blank" class="bg-green-900 p-4 text-xl rounded-md w-72 text-center">Portfolio</a>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+
+    <script>
+        const navbar = document.getElementById("navbar");
+        const sections = document.querySelectorAll("section");
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const newColor = entry.target.getAttribute("data-nav");
+                        navbar.className = navbar.className
+                            .replace(/bg-\w+-\d+/g, "") // Remove old bg class
+                            .trim() + ` ${newColor}`;   // Add new bg class
+                    }
+                });
+            },
+            { threshold: 0.6 }
+        );
+
+        sections.forEach((section) => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
